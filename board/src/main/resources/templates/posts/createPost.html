@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .pagination .page-link {
+            color: #000000; /* 원하는 기본 텍스트 색상 (회색 예시) */
+            background-color: transparent; /* 배경을 투명하게 */
+            border-color: #DEE2E6; /* 기본 테두리 색상 */
+        }
+        .pagination .page-link:hover {
+            color: #DEE2E6; /* 호버 시 텍스트 색상 (짙은 파랑 예시) */
+        }
+
+        .page-item.active .page-link {
+            color: #000000; /* 원하는 텍스트 색상으로 변경 */
+            background-color: #DEE2E6; /* 배경색도 원하는 색상으로 변경 */
+            border-color: #DEE2E6; /* 테두리 색상 */
+        }
+    </style>
+    <title>정화의 게시판 만들깅</title>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+<div>
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+</div>
+<div style="margin-top: 30px"></div>
+
+<div class="container text-center" style="max-width: 800px" >
+
+
+
+
+</div>
+</body>
+
+</html>
