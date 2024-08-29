@@ -32,13 +32,13 @@ public class Like extends BaseEntity {
     @JoinColumn(name = "comment_id")
     private Comment comment;
 
-    private Like (TargetType targetType, Member member, Post post){
+    private Like(TargetType targetType, Member member, Post post){
         this.targetType = targetType;
         this.member = member;
-        this.post = post;
+        setPost(post);
         this.comment = null;
     }
-    private Like (TargetType targetType, Member member, Comment comment){
+    private Like(TargetType targetType, Member member, Comment comment){
         this.targetType = targetType;
         this.member = member;
         this.post = null;
@@ -53,4 +53,11 @@ public class Like extends BaseEntity {
         return new Like(targetType,member, comment);
     }
 
+    /**
+     * Post 연관관계 편의 메서드
+     */
+    private void setPost(Post post){
+        this.post = post;
+        post.getLikes().add(this);
+    }
 }

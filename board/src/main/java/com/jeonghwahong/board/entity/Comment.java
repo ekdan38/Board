@@ -23,10 +23,18 @@ public class Comment extends BaseEntity {
 
     private Comment(String content, Post post){
         this.content = content;
-        this.post = post;
+        setPost(post);
     }
 
     public static Comment createComment(String content, Post post){
         return new Comment(content, post);
+    }
+
+    /**
+     * 연관관계 편의 메서드
+     */
+    private void setPost(Post post){
+        this.post = post;
+        post.getComments().add(this);
     }
 }

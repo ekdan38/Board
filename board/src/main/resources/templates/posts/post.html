@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .pagination .page-link {
+            color: #000000; /* 원하는 기본 텍스트 색상 (회색 예시) */
+            background-color: transparent; /* 배경을 투명하게 */
+            border-color: #DEE2E6; /* 기본 테두리 색상 */
+        }
+        .pagination .page-link:hover {
+            color: #DEE2E6; /* 호버 시 텍스트 색상 (짙은 파랑 예시) */
+        }
 
+        .page-item.active .page-link {
+            color: #000000; /* 원하는 텍스트 색상으로 변경 */
+            background-color: #DEE2E6; /* 배경색도 원하는 색상으로 변경 */
+            border-color: #DEE2E6; /* 테두리 색상 */
+        }
+    </style>
+    <title>정화의 게시판 만들깅</title>
+
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+<div>
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+</div>
+
+<div style="margin-top: 30px"></div>
+
+<div class="container text-center" style="max-width: 800px" >
+    <table class="table">
+        <!--게시판 종류로 href 걸자-->
+        <tr>
+            <td th:text="화제">화제</td>
+            <td th:text="유머">유머</td>
+            <td th:text="스포츠">스포츠</td>
+            <td th:text="뉴스">뉴스</td>
+        </tr>
+    </table>
+    <div th:object="${post}">
+        <div>
+            <p th:text="*{boardName}">게시판 이름</p>
+        </div>
+        <div class="row">
+            <div class="col"><p th:text="*{title}">제목</p></div>
+            <div class="col"><p th:text="*{modifiedDate}">날짜</p></div>
+        </div>
+        <div class="row">
+            <div class="col"><p th:text="*{createName}">작성자</p></div>
+            <div class="col"><p th:text="*{modifiedDate}">조회수</p></div>
+            <div class="col"><p th:text="*{like}">추천수</p></div>
+            <div class="col"><p th:text="*{comment}">댓글</p></div>
+        </div>
+        <div><p th:text="*{content}">내용</p></div>
+    </div>
+
+
+
+
+</div>
 </body>
+
 </html>
