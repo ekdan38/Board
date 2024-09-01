@@ -1,6 +1,7 @@
 package com.jeonghwahong.board.controller;
 
-import com.jeonghwahong.board.dto.PostListResponseDto;
+import com.jeonghwahong.board.dto.PostDto;
+import com.jeonghwahong.board.dto.PostPageResponseDto;
 import com.jeonghwahong.board.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,8 +18,8 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(@RequestParam (name = "pageNumber", defaultValue = "0") int pageNumber, Model model){
-        Page<PostListResponseDto> posts = postService.findAllPosts(pageNumber);
-        model.addAttribute("posts", posts);
+        PostPageResponseDto post = postService.findAllPosts(pageNumber);
+        model.addAttribute("post", post);
         return "home";
     }
 }

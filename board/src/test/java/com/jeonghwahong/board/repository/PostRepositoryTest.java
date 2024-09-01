@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.*;
@@ -108,7 +109,10 @@ class PostRepositoryTest {
         Page<Post> post = postRepository.findBySearch("Post", pageRequest);
 
         //then
+        List<Post> content = post.getContent();
+        System.out.println("content = " + content);
         System.out.println("post = " + post);
+
     }
 
 }

@@ -1,7 +1,6 @@
 package com.jeonghwahong.board.repository;
 
 import com.jeonghwahong.board.entity.Post;
-import org.hibernate.annotations.BatchSize;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

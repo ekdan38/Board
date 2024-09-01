@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <link th:href="@{/css/bootstrap.min.css}"
-        href="../css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
     <style>
         .pagination .page-link {
             color: #000000; /* 원하는 기본 텍스트 색상 (회색 예시) */
@@ -25,30 +25,30 @@
         }
 
     </style>
-  <title>정화의 게시판 만들깅</title>
+    <title>정화의 게시판 만들깅</title>
 
 
 </head>
 <body class="d-flex flex-column min-vh-100">
 <div>
-  <th:block th:replace="~{fragments/header :: header}"></th:block>
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
 </div>
 
 <div style="margin-top: 30px"></div>
 
 <div class="container text-center" style="max-width: 800px" >
-  <table class="table">
-    <!--게시판 종류로 href 걸자-->
-    <tr>
-      <td th:text="화제">화제</td>
-      <td th:text="유머">유머</td>
-      <td th:text="스포츠">스포츠</td>
-      <td th:text="뉴스">뉴스</td>
-    </tr>
-  </table>
+    <table class="table">
+        <!--게시판 종류로 href 걸자-->
+        <tr>
+            <td th:text="화제">화제</td>
+            <td th:text="유머">유머</td>
+            <td th:text="스포츠">스포츠</td>
+            <td th:text="뉴스">뉴스</td>
+        </tr>
+    </table>
 
     <ol class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center" th:each="post:${posts}">
+        <li class="list-group-item d-flex justify-content-between align-items-center" th:each="post:${post.posts}">
             <div class="ms-2 text-start">
                 <div class="fs-6 text-body-tertiary" th:text="${post.boardName}">게시판 제목</div>
                 <div class="d-flex  fs-5 fw-semibold me-3">
@@ -56,7 +56,7 @@
                     <div class="ms-2" th:text="'[' + ${post.comment} + ']'">댓글 수</div>
                 </div>
                 <div class="d-flex">
-                    <div class="me-4" th:text="${post.createdName}">작성자</div>
+                    <div class="me-4" th:text="${post.createdBy}">작성자</div>
                     <div class="me-2" th:text="'조회 ' + ${post.view}">조회수</div>
                 </div>
             </div>
@@ -69,21 +69,26 @@
 
     <nav aria-label="Page navigation example">
         <ul class="pagination d-flex justify-content-center my-sm-5">
-            <li class="page-item" th:classappend="${!posts.hasPrevious()} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{/(pageNumber=${posts.getNumber() - 1})}" href="#" aria-label="Previous">
+            <li class="page-item" th:classappend="${!post.posts.hasPrevious()} ? 'disabled' : ''">
+<!--                <a class="page-link"-->
+<!--                   th:href="@{/(pageNumber=${post.posts.getNumber() - 1})}"-->
+<!--                   href="#" aria-label="Previous">-->
+                <a class="page-link"
+                   th:href=""
+                   href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li class="page-item" th:each="i : ${#numbers.sequence(0, posts.getTotalPages() - 1)}"
-                th:classappend="${i == posts.getNumber()} ? 'active' : ''">
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, post.posts.getTotalPages() - 1)}"
+                th:classappend="${i == post.posts.getNumber()} ? 'active' : ''">
                 <a class="page-link"
                    th:href="@{/(pageNumber=${i})}"
                    th:text="${i + 1}"
-                   th:classappend="${i == posts.getNumber()} ? 'current' : ''">1
+                   th:classappend="${i == post.posts.getNumber()} ? 'current' : ''">1
                 </a>
             </li>
-            <li class="page-item" th:classappend="${!posts.hasNext()} ? 'disabled' : ''">
-                <a class="page-link" th:href="@{/(pageNumber=${posts.getNumber() + 1})}" aria-label="Next">
+            <li class="page-item" th:classappend="${!post.posts.hasNext()} ? 'disabled' : ''">
+                <a class="page-link" th:href="@{/(pageNumber=${post.posts.getNumber() + 1})}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>

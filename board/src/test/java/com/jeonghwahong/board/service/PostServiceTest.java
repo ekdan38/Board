@@ -1,7 +1,7 @@
 package com.jeonghwahong.board.service;
 
-import com.jeonghwahong.board.dto.PostListResponseDto;
-import com.jeonghwahong.board.dto.PostResponseDto;
+import com.jeonghwahong.board.dto.PostDto;
+import com.jeonghwahong.board.dto.PostPageResponseDto;
 import com.jeonghwahong.board.entity.Board;
 import com.jeonghwahong.board.entity.Manager;
 import com.jeonghwahong.board.entity.Member;
@@ -42,16 +42,16 @@ class PostServiceTest {
         initData();
 
         //when
-        Page<PostListResponseDto> page = postService.findAllPosts(0);
-        List<PostListResponseDto> content = page.getContent();
+        PostPageResponseDto page = postService.findAllPosts(0);
+        List<PostDto> content = page.getPosts().getContent();
 
         //then
         assertThat(content.size()).isEqualTo(6);
-        assertThat(page.getTotalPages()).isEqualTo(9);
-        assertThat(page.getNumber()).isEqualTo(0);
-        assertThat(page.getTotalElements()).isEqualTo(50);
-        assertThat(page.isFirst()).isTrue();
-        assertThat(page.isLast()).isFalse();
+        assertThat(page.getPosts().getTotalPages()).isEqualTo(9);
+        assertThat(page.getPosts().getNumber()).isEqualTo(0);
+        assertThat(page.getPosts().getTotalElements()).isEqualTo(50);
+        assertThat(page.getPosts().isFirst()).isTrue();
+        assertThat(page.getPosts().isLast()).isFalse();
     }
 
     @Test
@@ -70,14 +70,14 @@ class PostServiceTest {
         em.clear();
 
         //when
-        PostResponseDto foundPost = postService.findPostById(1L);
+        PostDto foundPost = postService.findPostById(1L);
 
         //then
         assertThat(foundPost.getTitle()).isEqualTo("Post");
         assertThat(foundPost.getContent()).isEqualTo("Post");
         assertThat(foundPost.getLike()).isEqualTo(0);
         assertThat(foundPost.getComment()).isEqualTo(0);
-        assertThat(foundPost.getCreateName()).isEqualTo(member.getName());
+        assertThat(foundPost.getCreatedBy()).isEqualTo(member.getName());
         assertThat(foundPost.getView()).isEqualTo(1);
 
     }
