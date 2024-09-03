@@ -1,4 +1,4 @@
-package com.jeonghwahong.board.dto;
+package com.jeonghwahong.board.dto.post;
 
 import lombok.Data;
 

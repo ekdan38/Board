@@ -1,7 +1,7 @@
 package com.jeonghwahong.board.service;
 
-import com.jeonghwahong.board.dto.PostDto;
-import com.jeonghwahong.board.dto.PostPageResponseDto;
+import com.jeonghwahong.board.dto.post.PostDto;
+import com.jeonghwahong.board.dto.post.PostPageResponseDto;
 import com.jeonghwahong.board.entity.Board;
 import com.jeonghwahong.board.entity.Manager;
 import com.jeonghwahong.board.entity.Member;
@@ -13,7 +13,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 

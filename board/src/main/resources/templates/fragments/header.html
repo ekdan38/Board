@@ -20,7 +20,7 @@
                 <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
             </ul>
 
-            <form class="d-flex mb-3 mb-lg-0 me-lg-3" role="search" th:action="@{/search}" method="get">
+            <form class="d-flex mb-3 mb-lg-0 me-lg-3" role="search" th:action="@{/posts/search}" method="get">
                 <input type="search" name="query" class="form-control form-control-dark text-bg-dark" aria-label="query">
             </form>
 
@@ -28,7 +28,7 @@
             <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2">Login</button>
                 <button type="button" class="btn btn-warning">Sign-up</button>
-                <button th:onclick="|location.href='@{/createPost}'|" type="button" class="btn btn-outline-light" th:text="'글 작성'">글 작성</button>
+                <button th:onclick="|location.href='@{/posts/add}'|" type="button" class="btn btn-outline-light" th:text="'글 작성'">글 작성</button>
             </div>
         </div>
     </div>

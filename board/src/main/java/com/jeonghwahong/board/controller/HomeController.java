@@ -1,10 +1,8 @@
 package com.jeonghwahong.board.controller;
 
-import com.jeonghwahong.board.dto.PostDto;
-import com.jeonghwahong.board.dto.PostPageResponseDto;
+import com.jeonghwahong.board.dto.post.PostPageResponseDto;
 import com.jeonghwahong.board.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
